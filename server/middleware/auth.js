@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 
 export const verifyToken = async (req, res, next) => {
     try {
+        // console.log(req.user, "1")
         let token = req.header("Authorization")
 
         if(!token){
@@ -15,8 +16,8 @@ export const verifyToken = async (req, res, next) => {
 
         const verified = jwt.verify(token, process.env.JWT_SECRET)
 
-        req.user = verified
-
+        req.user = verified // could not understand this
+        // console.log(req.user, "2")
         next()
     } catch (error) {
         res.status(500).json({error : error.message})
