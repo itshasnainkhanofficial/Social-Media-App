@@ -1,7 +1,8 @@
 import express from "express";
 import {
   getAllUsers,
-  getUser
+  getUser,
+  getUserFriends
 } from "../controllers/users.js";
 
 import { verifyToken } from "../middleware/auth.js";
@@ -16,5 +17,7 @@ router.get("/get" , verifyToken , getAllUsers)
 router.get("/:id", verifyToken , getUser )
 
 
+// Get User Friends
+router.get("/:id/friends", verifyToken , getUserFriends )
 
 export default router;
